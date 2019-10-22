@@ -1,7 +1,5 @@
-import java.util.Random;
-
 /**
- * <b>Abstract Class wich represent a player or an artifial intelligence</b>
+ * <b>Abstract Class wich represent a player or an artificial intelligence</b>
  * @see Player
  * @see ArtificialIntelligence
  *
@@ -28,7 +26,7 @@ public abstract class Actor {
      * The proposed combination that actor makes
      *
      * @see Combination
-     * @see Actor#setProposedCombination()
+     * @see Actor#setProposedCombination(Combination)
      * @see Actor#getProposedCombination()
      */
     protected Combination proposedCombination = new Combination(CombinationType.PROPOSED);
@@ -43,67 +41,34 @@ public abstract class Actor {
     protected Combination answeredCombination = new Combination(CombinationType.ANSWERED);
 
     /**
-     * Object Random
-     *
-     * @see Actor#getRandomNumber(Integer)
-     * @see Actor#getRandomNumberInRange(Integer, Integer)
-     */
-    protected Random rand = new Random();
-
-    /**
      * Abstract method to set an answer based on the challenger's combination
      *
      * @param challengerCombination
-     *                  Combination made by the challenger
+     *              Combination made by the challenger
      * @see Player#setAnsweredCombination(Combination)
      * @see ArtificialIntelligence#setAnsweredCombination(Combination)
      */
     public abstract void setAnsweredCombination(Combination challengerCombination);
 
     /**
-     * Abstract method to set a proposed combination
+     * Abstract method to set a proposed combination based on the defender's combination
      *
-     * @see Player#setProposedCombination()
-     * @see ArtificialIntelligence#setProposedCombination()
+     * @param answeredCombination
+     *              Combination made by the defender
+     * @see Player#setProposedCombination(Combination)
+     * @see ArtificialIntelligence#setProposedCombination(Combination)
      */
-    public abstract void setProposedCombination();
+    public abstract void setProposedCombination(Combination answeredCombination);
 
     /**
-     * Sets randomly secret combination's values
+     * Abstract method to set a secret combination
      *
-     * Numbers between 0 and 9
      * @see Combination
+     * @see Player#setSecretCombination()
+     * @see ArtificialIntelligence#setSecretCombination()
      */
-    public void setSecretCombination() {
-        for (int i = 1; i <= Combination.COMBINATION_SIZE; i++){
-            this.getSecretCombination().addCombinationValue(String.valueOf(this.getRandomNumber(Combination.MAX_COMBINATION_VALUE)));
-        }
-    }
+    public abstract void setSecretCombination();
 
-    /**
-     * It returns int value between 0 (inclusive) and bound value (inclusive).
-     *
-     * @param bound (bound -1) = max random value
-     * @return Integer
-     */
-    public Integer getRandomNumber(Integer bound){
-        return rand.nextInt(bound + 1);
-    }
-
-    /**
-     * It returns int value between lower (exlusive) and upper (inclusive). We will use this method only when a
-     * secret value is greater than the proposal value. So, new value must be between proposal value + 1 (exlusive) and
-     * maximum value + 1 (inclusive)
-     *
-     * @param lower min value
-     * @param upper max value
-     * @return Integer
-     */
-    public Integer getRandomNumberInRange(Integer lower, Integer upper){
-        lower++;
-        upper++;
-        return (rand.nextInt(upper - lower) + lower);
-    }
 
     /**
      * @return actor's secret combination
