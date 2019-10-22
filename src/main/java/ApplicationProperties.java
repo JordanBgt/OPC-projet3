@@ -53,4 +53,11 @@ public enum ApplicationProperties {
     public Integer getPropertyMaxCombinationValue(){
         return Integer.parseInt(properties.getProperty("maxCombinationValue"));
     }
+
+    /**
+     * @return minCombinationValue property
+     */
+    public Integer getPropertyMinCombinationValue(){
+        return Integer.parseInt(properties.getProperty("minCombinationValue"));
+    }
 }
