@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <b>Class Combination which represent a list of numbers</b>
@@ -17,31 +18,38 @@ public class Combination {
      *
      * @see ApplicationProperties
      */
-    public static int COMBINATION_SIZE = ApplicationProperties.INSTANCE.getPropertyTotalCombinationNumber();
+    public final int COMBINATION_SIZE = ApplicationProperties.INSTANCE.getPropertyCombinationSize();
+
 
     /**
      * List of combination's values
      *
-     * @see Combination#setCombinationValues(ArrayList)
+     * @see Combination#setCombinationValues(List)
      * @see Combination#getCombinationValues()
      */
-    private ArrayList<String> combinationValues = new ArrayList<String>();
+    protected List<String> combinationValues = new ArrayList<>();
 
     /**
      * Type of the combination
      *
      * @see CombinationType
-     * @see Combination#setCombinationType(CombinationType)
      * @see Combination#getCombinationType()
      */
-    private CombinationType combinationType;
+    protected CombinationType combinationType;
 
     /**
-     * Max combination's value. Combination values must be between 0 and this value.
+     * Max combination's value. Combination values must be between minCombinationValue and this value.
      *
      * @see ApplicationProperties#getPropertyMaxCombinationValue()
      */
-    public static Integer MAX_COMBINATION_VALUE = ApplicationProperties.INSTANCE.getPropertyMaxCombinationValue();
+    protected Integer maxCombinationValue = ApplicationProperties.INSTANCE.getPropertyMaxCombinationValue();
+
+    /**
+     * Max combination's value. Combination values must be between maxCombinationValue and this value.
+     *
+     * @see ApplicationProperties#getPropertyMinCombinationValue()
+     */
+    protected Integer minCombinationValue = ApplicationProperties.INSTANCE.getPropertyMinCombinationValue();
 
     /**
      * Combination's constructor : sets the type of combination
@@ -56,34 +64,15 @@ public class Combination {
     /**
      * @return the combination's values
      */
-    public ArrayList<String> getCombinationValues() {
+    public List<String> getCombinationValues() {
         return combinationValues;
-    }
-
-
-    /**
-     * Adds a value to combinationValues
-     *
-     * @param value
-     * 			Integer
-     * @throws IllegalArgumentException
-     * 			If we try to add more than the size of the combination
-     * @see Combination#COMBINATION_SIZE
-     */
-    public void addCombinationValue(String value){
-        if(combinationValues.size() == COMBINATION_SIZE){
-            throw new IllegalArgumentException("Combination can't have more than "+ COMBINATION_SIZE + "values");
-        }
-        else{
-            this.combinationValues.add(value);
-        }
     }
 
     /**
      * @param combinationValues
      * 			ArrayList of Integers
      */
-    public void setCombinationValues(ArrayList<String> combinationValues) {
+    public void setCombinationValues(List<String> combinationValues) {
         this.combinationValues = combinationValues;
     }
 
@@ -95,13 +84,8 @@ public class Combination {
         return combinationType;
     }
 
-    /**
-     * @param combinationType
-     * 			An instance of CombinationType
-     * @see CombinationType
-     */
-    public void setCombinationType(CombinationType combinationType) {
-        this.combinationType = combinationType;
+    public int getCOMBINATION_SIZE() {
+        return COMBINATION_SIZE;
     }
 
 }
