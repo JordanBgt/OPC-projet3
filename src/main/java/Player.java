@@ -46,19 +46,46 @@ public class Player extends Actor {
      * Ask the player to set a secret combination
      */
     public void setSecretCombination() {
+
         this.askPlayerToSetCombinationValues(this.secretCombination);
     }
 
     /**
-     * It fills values of a combination with player's entries
+     * Ask the player to key in values to fill a combination
      *
      * @param combination
      *          player combination : secret, proposed or answered
      */
-    public void askPlayerToSetCombinationValues(Combination combination){
-        System.out.println(combination.getCombinationType().getMessage());
-        String entry = sc.nextLine();
+    public void askPlayerToSetCombinationValues(Combination combination) {
+        String entry;
+        do{
+            System.out.println(combination.getCombinationType().getMessage());
+            entry = sc.nextLine();
+        } while(!this.isEntryValid(entry,combination));
         String[] entryValues = entry.split(",");
         combination.setCombinationValues(Arrays.asList(entryValues));
+    }
+
+    /**
+     * Check if the user's entry matches with the combination's pattern
+     *
+     * @param userEntry
+     *          entry key in by the user
+     * @param combination
+     *          the combination that the player must fill
+     * @return boolean
+     */
+    public boolean isEntryValid(String userEntry, Combination combination) {
+        if(combination.getCombinationType() == CombinationType.ANSWERED){
+            if(userEntry.matches(combination.getAnsweredCombinationPattern())){
+                return true;
+            }
+        } else {
+            if(userEntry.matches(combination.getCombinationPattern())){
+                return true;
+            }
+        }
+        System.out.println("Attention, la combinaison ne respecte pas le format attendu");
+        return false;
     }
 }
