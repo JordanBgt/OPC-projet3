@@ -52,13 +52,38 @@ public class Combination {
     protected Integer minCombinationValue = ApplicationProperties.INSTANCE.getPropertyMinCombinationValue();
 
     /**
+     * Regular expression for secret and proposed combinations
+     * @see Player#isEntryValid(String, Combination)
+     */
+    private String combinationPattern = "^";
+
+    /**
+     * Regular expression for answered combination
+     * @see Player#isEntryValid(String, Combination)
+     */
+    private String answeredCombinationPattern = "^";
+
+    /**
      * Combination's constructor : sets the type of combination
+     * Define combination's pattern depending on combination size
      *
      * @param type CombinationType
      * @see CombinationType
      */
     public Combination(CombinationType type){
         this.combinationType = type;
+        for(int i = 0; i < this.COMBINATION_SIZE; i++){
+            combinationPattern += "[" + this.minCombinationValue + "-" + this.maxCombinationValue + "]";
+            answeredCombinationPattern += "(\\+|-|\\=)";
+            if(i != this.COMBINATION_SIZE -1){
+                combinationPattern += ",";
+                answeredCombinationPattern += ",";
+            }
+            else{
+                combinationPattern += "$";
+                answeredCombinationPattern += "$";
+            }
+        }
     }
 
     /**
@@ -84,8 +109,24 @@ public class Combination {
         return combinationType;
     }
 
+    /**
+     * @return size of the combination
+     */
     public int getCOMBINATION_SIZE() {
         return COMBINATION_SIZE;
     }
 
+    /**
+     * @return pattern of the secret/proposed combination
+     */
+    public String getCombinationPattern() {
+        return combinationPattern;
+    }
+
+    /**
+     * @return pattern of the answered combination
+     */
+    public String getAnsweredCombinationPattern() {
+        return answeredCombinationPattern;
+    }
 }
