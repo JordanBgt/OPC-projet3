@@ -15,7 +15,7 @@ public class Player extends Actor {
     /**
      * Scanner to read user's entries
      */
-    private Scanner sc = new Scanner(System.in);
+    private final Scanner SCANNER = new Scanner(System.in);
 
     /**
      * Ask the player to set an answer to the challenger's proposed combination
@@ -38,6 +38,9 @@ public class Player extends Actor {
     public void setProposedCombination(Combination answeredCombination) {
         if((answeredCombination.getCombinationValues() != null) && (!answeredCombination.getCombinationValues().isEmpty())){
             System.out.println("AI's answered combination : " + answeredCombination.getCombinationValues());
+            if((this.getProposedCombination().getCombinationValues() != null) && (!this.getProposedCombination().getCombinationValues().isEmpty())){
+                System.out.println("Your previous answer : " + this.getProposedCombination().getCombinationValues());
+            }
         }
         this.askPlayerToSetCombinationValues(this.proposedCombination);
     }
@@ -60,7 +63,7 @@ public class Player extends Actor {
         String entry;
         do{
             System.out.println(combination.getCombinationType().getMessage());
-            entry = sc.nextLine();
+            entry = SCANNER.nextLine();
         } while(!this.isEntryValid(entry,combination));
         String[] entryValues = entry.split(",");
         combination.setCombinationValues(Arrays.asList(entryValues));

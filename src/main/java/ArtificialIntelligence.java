@@ -36,7 +36,7 @@ public class ArtificialIntelligence extends Actor{
      * It fills the list of ranges with the lower and the upper combination values
      */
     public ArtificialIntelligence(){
-        for(int i = 0; i < ApplicationProperties.INSTANCE.getPropertyTotalCombinationNumber() ; i++){
+        for(int i = 0; i < ApplicationProperties.INSTANCE.getPropertyCombinationSize() ; i++){
             HashMap<String, Integer> minMax = new HashMap<>();
             minMax.put("min", ApplicationProperties.INSTANCE.getPropertyMinCombinationValue());
             minMax.put("max", ApplicationProperties.INSTANCE.getPropertyMaxCombinationValue() + 1);
@@ -89,13 +89,11 @@ public class ArtificialIntelligence extends Actor{
                 if ("+".equals(answerValues.get(i))) {
                     this.rangeProposedCombinationValues.get(i).put("min", Integer.parseInt(proposedCombinationValues.get(i)));
                     newProposition.add(String.valueOf(this.findMiddleValue(this.rangeProposedCombinationValues.get(i).get("min"), (this.rangeProposedCombinationValues.get(i).get("max")))));
-                    System.out.println(this.rangeProposedCombinationValues.get(i));
                 } else if ("=".equals(answerValues.get(i))) {
                     newProposition.add(proposedCombinationValues.get(i));
                 } else if ("-".equals(answerValues.get(i))) {
                     this.rangeProposedCombinationValues.get(i).put("max", Integer.parseInt(proposedCombinationValues.get(i)));
                     newProposition.add(String.valueOf(this.findMiddleValue(this.rangeProposedCombinationValues.get(i).get("min"), this.rangeProposedCombinationValues.get(i).get("max"))));
-                    System.out.println(this.rangeProposedCombinationValues.get(i));
                 }
                 this.proposedCombination.setCombinationValues(newProposition);
             }
