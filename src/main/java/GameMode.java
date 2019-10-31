@@ -16,7 +16,10 @@ public abstract class GameMode {
     public GameMode(){
     }
 
+    public abstract void initGameMode();
+
     public void play(){
+        this.initGameMode();
         this.defender.setSecretCombination();
         if(devMode){
             LOGGER.info("La combinaison secrète est : " + this.defender.getSecretCombination().getCombinationValues());

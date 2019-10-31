@@ -7,7 +7,8 @@ public class DuelMode extends GameMode {
     private static final Logger LOGGER = Logger.getLogger(DuelMode.class);
     private String winner = "AI";
 
-    public DuelMode() {
+    @Override
+    public void initGameMode() {
         this.player = new Player();
         this.artificialIntelligence = new ArtificialIntelligence();
         this.gameModeMessage = "Welcome to Duel Mode. To win : guess AI' secret combination before it !";
@@ -15,6 +16,7 @@ public class DuelMode extends GameMode {
 
     @Override
     public void play() {
+        this.initGameMode();
         System.out.println(this.getGameModeMessage());
         this.player.setSecretCombination();
         System.out.println("player secret combination : " + this.player.getSecretCombination().getCombinationValues());
