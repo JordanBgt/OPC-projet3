@@ -1,27 +1,25 @@
 import org.apache.log4j.Logger;
 
+import java.util.Scanner;
+
 public abstract class GameMode {
 
-    private int tryoutNumber = ApplicationProperties.INSTANCE.getPropertyTryoutNumber();
-    private Actor challenger;
-    private Actor defender;
-    private boolean resolve = false;
-    private String gameModeMessage;
-    private boolean isDevMode = Boolean.parseBoolean(ApplicationProperties.INSTANCE.getPropertyDevMode());
-    private static Logger logger = Logger.getLogger(GameMode.class);
+    protected int tryoutNumber = ApplicationProperties.INSTANCE.getPropertyTryoutNumber();
+    protected Actor challenger;
+    protected Actor defender;
+    protected boolean resolve = false;
+    protected String gameModeMessage;
+    protected boolean devMode = Boolean.parseBoolean(ApplicationProperties.INSTANCE.getPropertyDevMode());
+    private static final Logger LOGGER = Logger.getLogger(GameMode.class);
+    private final Scanner SCANNER = new Scanner(System.in);
 
-    public GameMode(){}
-
-    public GameMode(Actor challenger, Actor defender){
-        this.challenger = challenger;
-        this.defender = defender;
+    public GameMode(){
     }
 
     public void play(){
-        System.out.println(this.gameModeMessage);
         this.defender.setSecretCombination();
-        if(isDevMode){
-            logger.info("La combinaison secrète est : " + this.defender.getSecretCombination().getCombinationValues());
+        if(devMode){
+            LOGGER.info("La combinaison secrète est : " + this.defender.getSecretCombination().getCombinationValues());
         }
         Combination secretCombination = this.defender.getSecretCombination();
         do {
@@ -31,14 +29,14 @@ public abstract class GameMode {
             this.defender.setAnsweredCombination(proposedCombination);
             checkIfCombinationAreEquals(proposedCombination, secretCombination);
         } while ((this.tryoutNumber  != 0) && (!isResolve()));
-        String message = "Game over : ";
+        System.out.println(Messages.GAMEOVER.getMessage());
         if(resolve){
-            message += "Challenger wins !";
+            System.out.println("Challenger wins !");
         }
         else{
-            message += "Defender wins !";
+            System.out.println("Defender wins ! The secret combination was : " + this.defender.getSecretCombination().getCombinationValues());
         }
-        System.out.println(message);
+        this.displayEndGameChoices();
     }
 
     public void decrementTryOutNumber(){
@@ -61,7 +59,21 @@ public abstract class GameMode {
         return gameModeMessage;
     }
 
-    public void setGameModeMessage(String gameModeMessage) {
-        this.gameModeMessage = gameModeMessage;
+    public boolean isDevMode() {
+        return devMode;
+    }
+
+    public void displayEndGameChoices(){
+        System.out.println("Please select an option : ");
+        System.out.println("    1-> Try again");
+        System.out.println("    2-> Game modes menu");
+        System.out.println("    3-> Exit");
+        int entry = SCANNER.nextInt();
+        if(entry == 1){
+            this.play();
+        }
+        if(entry == 3){
+            Game.exitGame();
+        }
     }
 }
