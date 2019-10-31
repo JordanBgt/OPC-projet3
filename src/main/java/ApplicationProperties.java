@@ -43,8 +43,8 @@ public enum ApplicationProperties {
     /**
      * @return totalCombinationNumber property
      */
-    public Integer getPropertyTotalCombinationNumber(){
-        return Integer.parseInt(properties.getProperty("totalCombinationNumber"));
+    public Integer getPropertyCombinationSize(){
+        return Integer.parseInt(properties.getProperty("combinationSize"));
     }
 
     /**
