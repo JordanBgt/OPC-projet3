@@ -11,7 +11,6 @@ public class ChallengerMode extends GameMode {
      * The challenger is a player
      * The defender is an artificial intelligence
      */
-    @Override
     public void initGameMode() {
         this.challenger = new Player();
         this.defender = new ArtificialIntelligence();

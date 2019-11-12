@@ -1,5 +1,5 @@
 /**
- * <b>Abstract Class wich represent a player or an artificial intelligence</b>
+ * <b>Abstract Class which represent a player or an artificial intelligence</b>
  * @see Player
  * @see ArtificialIntelligence
  *

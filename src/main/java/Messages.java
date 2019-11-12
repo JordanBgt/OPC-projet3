@@ -1,3 +1,13 @@
+/**
+ * <b>ASCII messages</b>
+ *
+ * <p>List of messages :</p>
+ * <ul>
+ *     <li>WELCOME</li>
+ *     <li>GAMEOVER</li>
+ *     <li>GOODBYE</li>
+ * </ul>
+ */
 public enum Messages {
 
     WELCOME (" __      __ ___________.____     _________  ________      _____   ___________\n" +

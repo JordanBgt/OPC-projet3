@@ -88,7 +88,7 @@ public class Player extends Actor {
                 return true;
             }
         }
-        System.out.println("Attention, la combinaison ne respecte pas le format attendu");
+        System.out.println("Be careful, the combination does not respect the expected format");
         return false;
     }
 }

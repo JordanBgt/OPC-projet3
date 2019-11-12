@@ -1,5 +1,10 @@
 import org.apache.log4j.Logger;
 
+/**
+ * <b>Duel mode which inherits from GameMode</b>
+ *
+ * @see GameMode
+ */
 public class DuelMode extends GameMode {
 
     private Player player;
@@ -7,13 +12,22 @@ public class DuelMode extends GameMode {
     private static final Logger LOGGER = Logger.getLogger(DuelMode.class);
     private String winner = "AI";
 
-    @Override
+    /**
+     * Initialize challenger mode
+     *
+     * The challenger is a player
+     * The defender is an artificial intelligence
+     */
     public void initGameMode() {
         this.player = new Player();
         this.artificialIntelligence = new ArtificialIntelligence();
         this.gameModeMessage = "Welcome to Duel Mode. To win : guess AI' secret combination before it !";
     }
 
+    /**
+     * It overrides play method. It contains the game logic in duel mode.
+     * Both player and IA are challenger and defender
+     */
     @Override
     public void play() {
         this.initGameMode();
@@ -28,11 +42,16 @@ public class DuelMode extends GameMode {
             this.setProposedCombinations();
             this.setAnsweredCombination();
         } while(!this.isResolve());
-        System.out.println("Game over, " + this.winner + " wins !");
+        System.out.println(Messages.GAMEOVER.getMessage());
+        System.out.println(this.winner + " wins !");
         System.out.println("AI' secret combination was : " + this.artificialIntelligence.getSecretCombination().getCombinationValues());
         System.out.println("Player' secret combination was : " + this.player.getSecretCombination().getCombinationValues());
+        this.displayEndGameChoices();
     }
 
+    /**
+     * In duel mode, both Player and IA must set a proposed combination
+     */
     public void setProposedCombinations(){
         this.player.setProposedCombination(this.artificialIntelligence.getAnsweredCombination());
         checkIfCombinationAreEquals(this.player.getProposedCombination(), this.artificialIntelligence.getSecretCombination());
@@ -48,7 +67,10 @@ public class DuelMode extends GameMode {
             this.winner = "Player";
         }
     }
-    
+
+    /**
+     * In duel mode, both Player an IA must set an answered combination
+     */
     public void setAnsweredCombination(){
         if(!isResolve()) {
             this.player.setAnsweredCombination(this.artificialIntelligence.getProposedCombination());
