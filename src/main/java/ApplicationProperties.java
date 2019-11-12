@@ -1,3 +1,5 @@
+import org.apache.log4j.Logger;
+
 import java.io.IOException;
 import java.util.Properties;
 
@@ -11,6 +13,7 @@ public enum ApplicationProperties {
     INSTANCE;
 
     private final Properties properties;
+    private final Logger LOGGER = Logger.getLogger(ApplicationProperties.class);
 
     /**
      * properties => list of properties
@@ -22,7 +25,7 @@ public enum ApplicationProperties {
         try{
             properties.load(getClass().getClassLoader().getResourceAsStream("application.properties"));
         } catch (IOException e){
-            // TODO : logger l'exception
+            this.LOGGER.error(e.getMessage());
         }
     }
 
