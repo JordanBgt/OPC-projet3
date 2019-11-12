@@ -1,5 +1,16 @@
+/**
+ * <b>Challenger mode which inherits from GameMode</b>
+ *
+ * @see GameMode
+ */
 public class ChallengerMode extends GameMode {
 
+    /**
+     * Initialize challenger mode
+     *
+     * The challenger is a player
+     * The defender is an artificial intelligence
+     */
     @Override
     public void initGameMode() {
         this.challenger = new Player();
