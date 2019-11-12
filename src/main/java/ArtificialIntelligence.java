@@ -12,11 +12,11 @@ import java.util.Random;
  *     <li>List of ranges for each proposed combination's values</li>
  * </ul>
  *
- * <p>It overrides :
+ * <p>It overrides :</p>
  * <ul>
  *     <li>setAnsweredCombination</li>
  *     <li>setProposedCombination</li>
- * </ul></p>
+ * </ul>
  * <p>setProposedCombination(Combination answeredCombination)</p>
  */
 public class ArtificialIntelligence extends Actor{

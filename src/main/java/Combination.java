@@ -4,12 +4,12 @@ import java.util.List;
 /**
  * <b>Class Combination which represent a list of numbers</b>
  *
- * <p>Class attributes :
+ * <p>Class attributes :</p>
  * <ul>
  *     <li>Size of the combination</li>
  *     <li>List of combination's values</li>
  *     <li>Type of the combination</li>
- * </ul></p>
+ * </ul>
  */
 public class Combination {
 

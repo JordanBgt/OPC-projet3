@@ -4,11 +4,11 @@ import java.util.Scanner;
 /**
  * <b>Player Class which inherits from Actor</b>
  *
- * <p>It overrides :
+ * <p>It overrides :</p>
  * <ul>
  *     <li>setAnsweredCombination</li>
  *     <li>setProposedCombination</li>
- * </ul></p>
+ * </ul>
  */
 public class Player extends Actor {
 

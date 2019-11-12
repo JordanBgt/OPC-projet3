@@ -3,13 +3,12 @@
  * @see Player
  * @see ArtificialIntelligence
  *
- * <p>Class Attributes :
+ * <p>Class Attributes :</p>
  * <ul>
  *     <li>A secret combination</li>
  *     <li>A proposed combination</li>
  *     <li>An answer to player's or artificial intelligence's proposed combination</li>
  * </ul>
- * </p>
  */
 public abstract class Actor {
 
