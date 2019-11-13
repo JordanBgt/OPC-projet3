@@ -22,7 +22,7 @@ ou égal.
 
 ### Mode duel
 
-Le joueur et l'IA sont à la fois attaquant et défenseur. Le premier qui trouve la combinaison de l'autre à gagné.
+Le joueur et l'IA sont à la fois attaquant et défenseur. Le premier qui trouve la combinaison de l'autre a gagné.
 ## 
 ## Spécifications 
 
