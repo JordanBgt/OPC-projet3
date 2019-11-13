@@ -24,7 +24,6 @@ public class Player extends Actor {
      * @param challengerCombination
      *                  Combination made by the challenger
      */
-    @Override
     public void setAnsweredCombination(Combination challengerCombination) {
         System.out.println("Yours secret combination : "+this.secretCombination.getCombinationValues());
         System.out.println("Challenger's combination : "+challengerCombination.getCombinationValues());
@@ -34,7 +33,6 @@ public class Player extends Actor {
     /**
      * Ask the player to set a proposed combination in order to guess the secret combination
      */
-    @Override
     public void setProposedCombination(Combination answeredCombination) {
         if((answeredCombination.getCombinationValues() != null) && (!answeredCombination.getCombinationValues().isEmpty())){
             System.out.println("AI's answered combination : " + answeredCombination.getCombinationValues());

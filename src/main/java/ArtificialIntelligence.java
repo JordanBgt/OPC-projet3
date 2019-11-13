@@ -51,7 +51,6 @@ public class ArtificialIntelligence extends Actor{
      * @param challengerCombination
      *                  Combination made by the challenger
      */
-    @Override
     public void setAnsweredCombination(Combination challengerCombination) {
         List<String> secretCombinationValues = this.secretCombination.getCombinationValues();
         List<String> challengerCombinationValues = challengerCombination.getCombinationValues();
@@ -114,7 +113,6 @@ public class ArtificialIntelligence extends Actor{
      * Numbers between 0 and 9
      * @see Combination
      */
-    @Override
     public void setSecretCombination() {
         List<String> secretCombinationValues = new ArrayList<>();
         for (int i = 1; i <= this.secretCombination.COMBINATION_SIZE; i++){
