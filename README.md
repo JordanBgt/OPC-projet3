@@ -22,7 +22,7 @@ ou égal.
 
 ### Mode duel
 
-Le joueur et l'IA sont à la fois attaquant et défenseur. Le premier qui trouve la combinaison de l'autre à gagné.
+Le joueur et l'IA sont à la fois attaquant et défenseur. Le premier qui trouve la combinaison de l'autre a gagné.
 ## 
 ## Spécifications 
 
@@ -39,3 +39,7 @@ nombre d'essais, mode développeur activé ou non)
 - Le code doit être disponible sur GitHub, il doit être indenté et commenté. 
 ## 
 ## Compiler et lancer l'application
+
+- Clôner le dépot
+- Importer le projet dans votre IDE
+- Exécuter la classe Main
