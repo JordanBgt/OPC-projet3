@@ -43,3 +43,9 @@ nombre d'essais, mode développeur activé ou non)
 - Clôner le dépot
 - Importer le projet dans votre IDE
 - Exécuter la classe Main
+
+#
+## Executer le jar (jar with dependencies)
+
+- Ouvrir une console
+- Executer la commande : ```java -jar path_vers_le_jar```
